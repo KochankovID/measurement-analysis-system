@@ -2,6 +2,7 @@ import argparse
 import asyncio
 import math
 import time
+from os import listdir
 
 import aiofiles
 import aiohttp
@@ -18,8 +19,9 @@ class SiteParser:
     )
     doc_number = 102141
 
-    def __init__(self, page_size: int):
+    def __init__(self, page_size: int, file_dir_name: str = "files"):
         self._page_size = page_size
+        self._presented_files = listdir("files")
 
     async def run(self):
         for i in tqdm(range(1, math.ceil(self.doc_number / self._page_size))):
@@ -40,27 +42,28 @@ class SiteParser:
                         )
                         file_link = f'{self.domain}{link_property["link"]}'
                         file_name = link_property["value"]
+                        if file_name in self._presented_files:
+                            continue
                         request_files_jobs.append(
-                            loop.create_task(get_file(session, file_link, file_name))
+                            loop.create_task(self.get_file(session, file_link, file_name))
                         )
 
                     files = await asyncio.gather(*request_files_jobs)
                     save_files_jobs = [
-                        loop.create_task(save_file(file)) for file in files
+                        loop.create_task(self.save_file(file)) for file in files
                     ]
                     await asyncio.gather(*save_files_jobs)
                     time.sleep(0.5)
 
+    @staticmethod
+    async def get_file(session, link, file_name) -> dict[str, str]:
+        async with session.get(link) as response:
+            return {"file_name": file_name, "text": await response.read()}
 
-async def get_file(session, link, file_name) -> dict[str, str]:
-    async with session.get(link) as response:
-        return {"file_name": file_name, "text": await response.read()}
-
-
-async def save_file(file_data: dict[str, str]):
-    f = await aiofiles.open(f'./files/{file_data["file_name"]}', mode="wb")
-    await f.write(file_data["text"])
-    await f.close()
+    async def save_file(self, file_data: dict[str, str]):
+        f = await aiofiles.open(f'./files/{file_data["file_name"]}', mode="wb")
+        await f.write(file_data["text"])
+        await f.close()
 
 
 if __name__ == "__main__":
