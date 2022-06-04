@@ -24,7 +24,10 @@ config.set_main_option("sqlalchemy.url", container.config().DB_URL)
 # add your model's MetaData object here
 # for 'autogenerate' support
 # from myapp import mymodel
-from app.main import app
+import app.models.sqalchemy.verification
+import app.models.sqalchemy.type_description
+import app.models.sqalchemy.application_area
+
 target_metadata = app.db.db.Base.metadata
 
 

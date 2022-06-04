@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="371px" preserveAspectRatio="none" style="width:577px;height:371px;background:#FFFFFF;" version="1.1" viewBox="0 0 577 371" width="577px" zoomAndPan="magnify"><defs/><g><!--MD5=[b7f68625daee450e6c8392a818d962ac]
+class Область применения--><g id="elem_Область применения"><rect codeLine="6" fill="#FFFFFF" height="78.0293" id="Область применения" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="321" x="12" y="269"/><ellipse cx="92.75" cy="283" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M94.4531,278.4292 Q94.6191,278.1304 94.7935,278.0059 Q94.9678,277.8813 95.2334,277.8813 Q95.6401,277.8813 95.8103,278.0972 Q95.9805,278.313 95.9805,278.8359 L95.9971,280.9941 Q95.9971,281.5669 95.8103,281.7661 Q95.6235,281.9653 95.1338,281.9653 Q94.7852,281.9653 94.5984,281.7993 Q94.4116,281.6333 94.2788,281.1851 Q94.063,280.3965 93.5898,280.052 Q93.1167,279.7075 92.2783,279.7075 Q91,279.7075 90.3193,280.5708 Q89.6387,281.4341 89.6387,283.0693 Q89.6387,284.6963 90.3276,285.5679 Q91.0166,286.4395 92.2949,286.4395 Q93.1665,286.4395 94.2166,285.8584 Q95.2666,285.2773 95.5405,285.2773 Q95.8643,285.2773 96.0842,285.5513 Q96.3042,285.8252 96.3042,286.2319 Q96.3042,286.9624 95.0176,287.6099 Q93.731,288.2573 92.1206,288.2573 Q89.9458,288.2573 88.6011,286.8213 Q87.2563,285.3853 87.2563,283.0693 Q87.2563,280.8364 88.6177,279.3589 Q89.979,277.8813 92.0708,277.8813 Q92.6602,277.8813 93.2329,278.0142 Q93.8057,278.147 94.4531,278.4292 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="152" x="110.25" y="288.5679">Область применения</text><line style="stroke:#000000;stroke-width:1.0;" x1="13" x2="332" y1="297" y2="297"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="247" x="18" y="315.0752">Имя области применения: varchar</text><line style="stroke:#000000;stroke-width:1.0;" x1="13" x2="332" y1="322.0146" y2="322.0146"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="309" x="18" y="340.0898">Id описание типа (внешний ключ): integer</text></g><!--MD5=[0f19a548ca1b31cf610bde16b98410f0]
+class Описание типа--><g id="elem_Описание типа"><rect codeLine="11" fill="#FFFFFF" height="180.1172" id="Описание типа" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="302" x="169.5" y="12"/><ellipse cx="262.75" cy="26" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M264.4531,21.4292 Q264.6191,21.1304 264.7935,21.0059 Q264.9678,20.8813 265.2334,20.8813 Q265.6401,20.8813 265.8103,21.0972 Q265.9805,21.313 265.9805,21.8359 L265.9971,23.9941 Q265.9971,24.5669 265.8103,24.7661 Q265.6235,24.9653 265.1338,24.9653 Q264.7852,24.9653 264.5984,24.7993 Q264.4116,24.6333 264.2788,24.1851 Q264.063,23.3965 263.5898,23.052 Q263.1167,22.7075 262.2783,22.7075 Q261,22.7075 260.3193,23.5708 Q259.6387,24.4341 259.6387,26.0693 Q259.6387,27.6963 260.3276,28.5679 Q261.0166,29.4395 262.2949,29.4395 Q263.1665,29.4395 264.2166,28.8584 Q265.2666,28.2773 265.5405,28.2773 Q265.8643,28.2773 266.0842,28.5513 Q266.3042,28.8252 266.3042,29.2319 Q266.3042,29.9624 265.0176,30.6099 Q263.731,31.2573 262.1206,31.2573 Q259.9458,31.2573 258.6011,29.8213 Q257.2563,28.3853 257.2563,26.0693 Q257.2563,23.8364 258.6177,22.3589 Q259.979,20.8813 262.0708,20.8813 Q262.6602,20.8813 263.2329,21.0142 Q263.8057,21.147 264.4531,21.4292 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="108" x="280.25" y="31.5679">Описание типа</text><line style="stroke:#000000;stroke-width:1.0;" x1="170.5" x2="470.5" y1="40" y2="40"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="186" x="175.5" y="58.0752">Id описание типа: integer</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="135" x="175.5" y="75.0898">Гос номер: varchar</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="118" x="175.5" y="92.1045">Имя СИ: varchar</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="236" x="175.5" y="109.1191">Единицы измерения СИ: varchar</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="290" x="175.5" y="126.1338">Ошибка измерения СИ: double precision</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="199" x="175.5" y="143.1484">Производитель СИ: varchar</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="200" x="175.5" y="160.1631">Дата утверждения СИ: date</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="143" x="175.5" y="177.1777">Имя файла: varchar</text><line style="stroke:#000000;stroke-width:1.0;" x1="170.5" x2="470.5" y1="184.1172" y2="184.1172"/></g><!--MD5=[8b74c9344a25350dddab10e8f3b15aef]
+class Поверка--><g id="elem_Поверка"><rect codeLine="22" fill="#FFFFFF" height="112.0586" id="Поверка" rx="2.5" ry="2.5" style="stroke:#000000;stroke-width:1.0;" width="202" x="368.5" y="252"/><ellipse cx="435.75" cy="266" fill="#FFFFFF" rx="9" ry="9" style="stroke:#000000;stroke-width:1.0;"/><path d="M437.4531,261.4292 Q437.6191,261.1304 437.7935,261.0059 Q437.9678,260.8813 438.2334,260.8813 Q438.6401,260.8813 438.8103,261.0972 Q438.9805,261.313 438.9805,261.8359 L438.9971,263.9941 Q438.9971,264.5669 438.8103,264.7661 Q438.6235,264.9653 438.1338,264.9653 Q437.7852,264.9653 437.5984,264.7993 Q437.4116,264.6333 437.2788,264.1851 Q437.063,263.3965 436.5898,263.052 Q436.1167,262.7075 435.2783,262.7075 Q434,262.7075 433.3193,263.5708 Q432.6387,264.4341 432.6387,266.0693 Q432.6387,267.6963 433.3276,268.5679 Q434.0166,269.4395 435.2949,269.4395 Q436.1665,269.4395 437.2166,268.8584 Q438.2666,268.2773 438.5405,268.2773 Q438.8643,268.2773 439.0842,268.5513 Q439.3042,268.8252 439.3042,269.2319 Q439.3042,269.9624 438.0176,270.6099 Q436.731,271.2573 435.1206,271.2573 Q432.9458,271.2573 431.6011,269.8213 Q430.2563,268.3853 430.2563,266.0693 Q430.2563,263.8364 431.6177,262.3589 Q432.979,260.8813 435.0708,260.8813 Q435.6602,260.8813 436.2329,261.0142 Q436.8057,261.147 437.4531,261.4292 Z " fill="#000000"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="60" x="453.25" y="271.5679">Поверка</text><line style="stroke:#000000;stroke-width:1.0;" x1="369.5" x2="569.5" y1="280" y2="280"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="186" x="374.5" y="298.0752">Id описание типа: integer</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="190" x="374.5" y="315.0898">Модификация СИ: varchar</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="116" x="374.5" y="332.1045">Тип СИ: varchar</text><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="165" x="374.5" y="349.1191">Дата поверки СИ: date</text><line style="stroke:#000000;stroke-width:1.0;" x1="369.5" x2="569.5" y1="356.0586" y2="356.0586"/></g><!--MD5=[2bcb2e9fc64f3d4461b96a3885475c54]
+reverse link Описание типа to Область применения--><g id="link_Описание типа_Область применения"><path codeLine="29" d="M251.25,212.0549 C251.25,212.0549 251.25,268.9895 251.25,268.9895 " fill="none" id="Описание типа-backto-Область применения" style="stroke:#595959;stroke-width:1.0;"/><polygon fill="none" points="244.2501,212.055,251.25,192.0549,258.2501,212.0549,244.2501,212.055" style="stroke:#595959;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="134" x="116.25" y="237.592">Id описание типа:id</text></g><!--MD5=[8f3a46f5efd192b9bad680cdcedfd8a0]
+reverse link Описание типа to Поверка--><g id="link_Описание типа_Поверка"><path codeLine="30" d="M420,212.0549 C420,212.0549 420,251.9243 420,251.9243 " fill="none" id="Описание типа-backto-Поверка" style="stroke:#595959;stroke-width:1.0;"/><polygon fill="none" points="413.0001,212.055,420,192.0549,427.0001,212.0549,413.0001,212.055" style="stroke:#595959;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="134" x="285" y="229.0594">Id описание типа:id</text></g><!--MD5=[acd2a97c00dab51d3436cdbe3a516d25]
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class "Область применения" {
+   Имя области применения: varchar
+   Id описание типа (внешний ключ): integer
+}
+
+class "Описание типа" {
+   Id описание типа: integer
+   Гос номер: varchar
+   Имя СИ: varchar
+   Единицы измерения СИ: varchar
+   Ошибка измерения СИ: double precision
+   Производитель СИ: varchar
+   Дата утверждения СИ: date
+   Имя файла: varchar
+}
+
+class Поверка {
+   Id описание типа: integer
+   Модификация СИ: varchar
+   Тип СИ: varchar
+   Дата поверки СИ: date
+}
+
+"Область применения"  -up[#595959,plain]-^  "Описание типа" : "Id описание типа:id"
+Поверка      -up[#595959,plain]-^  "Описание типа" : "Id описание типа:id"
+@enduml
+
+@startuml
+
+
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor white
+    FontColor black
+    FontName Verdana
+    HyperLinkColor blue
+    LineColor black
+    LineThickness 1
+    Margin 5
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  header {
+    LineThickness 0
+  }
+  node {
+    MaximumWidth 300
+  }
+  title {
+    FontSize 22
+    LineThickness 0
+  }
+</style>
+
+skinparam ArrowLollipopColor black
+skinparam BackgroundColor white
+skinparam DefaultFontName Verdana
+skinparam DefaultMonospacedFontName Courier
+skinparam LifelineStrategy nosolid
+skinparam ParticipantPadding 10
+skinparam SequenceLifeLineBorderColor black
+skinparam Shadowing false
+skinparam UseBetaStyle true
+
+skinparam Activity {
+  BackgroundColor white
+  BarColor black
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam Boundary {
+  FontColor black
+}
+skinparam Box {
+  Padding 5
+}
+skinparam CircledCharacter {
+  FontColor black
+  FontName Courier
+  Radius 9
+}
+skinparam Class {
+  BackgroundColor white
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassAttribute {
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassStereotype {
+  FontColor black
+  FontName Verdana
+}
+skinparam Footer {
+  FontColor black
+  FontName Verdana
+}
+skinparam Header {
+  FontColor black
+  FontName Verdana
+}
+skinparam Hyperlink {
+  Color blue
+}
+skinparam IconPackage {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPrivate {
+  Color black
+  BackgroundColor white
+}
+skinparam IconProtected {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPublic {
+  Color black
+  BackgroundColor white
+}
+skinparam Note {
+  FontColor black
+  FontName Verdana
+}
+skinparam Object {
+  BorderColor black
+}
+skinparam Package {
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam State {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeA {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeC {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeE {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeI {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeN {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam UseCaseStereoType {
+  FontColor black
+  FontName Verdana
+}
+top to bottom direction
+skinparam linetype ortho
+
+class "Область применения" {
+   Имя области применения: varchar
+   Id описание типа (внешний ключ): integer
+}
+
+class "Описание типа" {
+   Id описание типа: integer
+   Гос номер: varchar
+   Имя СИ: varchar
+   Единицы измерения СИ: varchar
+   Ошибка измерения СИ: double precision
+   Производитель СИ: varchar
+   Дата утверждения СИ: date
+   Имя файла: varchar
+}
+
+class Поверка {
+   Id описание типа: integer
+   Модификация СИ: varchar
+   Тип СИ: varchar
+   Дата поверки СИ: date
+}
+
+"Область применения"  -up[#595959,plain]-^  "Описание типа" : "Id описание типа:id"
+Поверка      -up[#595959,plain]-^  "Описание типа" : "Id описание типа:id"
+@enduml
+
+PlantUML version 1.2022.4(Sat Apr 09 16:29:17 MSK 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

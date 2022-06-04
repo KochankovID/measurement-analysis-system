@@ -1,0 +1,79 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+folder "Сырые данные" as raw_data {
+    folder "Утверждённые типы средств измерений" as si_type {
+        file "2022-84825-22.pdf"
+        file "2022-84825-23.pdf"
+    }
+    component "Сведения о результатах поверки средств измерений" as verification
+    si_type -[hidden]- verification
+}
+
+component pdf_processor [
+    Извлечение фич из PDF
+    - номер в гос реестре
+    - наименование си
+    - единица измерения
+    - погрешность си
+    - дата утверждения си
+    - изготовитель си
+]
+si_type -> pdf_processor
+
+component pandas_dataset [
+    Пандас датасет
+    - номер в гос реестре
+    - наименование си
+    - единица измерения
+    - погрешность си
+    - дата утверждения си
+    - изготовитель си
+    - модификация си
+    - тип си
+    - дата поверки
+]
+
+pdf_processor -right-> pandas_dataset
+verification -right-> pandas_dataset
+
+component model [
+    Кластеризация методами:
+    - DBscan
+    - TF IDF
+    - Spectral clustering
+    - k-means
+]
+
+component pandas_dataset_with_areas [
+    Полный пандас датасет
+    - номер в гос реестре
+    - наименование си
+    - единица измерения
+    - погрешность си
+    - дата утверждения си
+    - изготовитель си
+    - модификация си
+    - тип си
+    - дата поверки
+    - область назначения
+]
+
+cloud "Сервер" as server {
+    database "База данных" as postgres
+
+    component "API доступа к данным" as api
+    component "Фронтенд" as frontend
+    api -left- postgres
+    frontend -left- api
+}
+
+pandas_dataset -> model
+model -right-> pandas_dataset_with_areas
+
+pandas_dataset_with_areas -right-> postgres
+
+file "2022-84825-24.pdf" as f1
+f1 -up- api
+
+@enduml

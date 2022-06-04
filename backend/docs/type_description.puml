@@ -4,23 +4,29 @@
 top to bottom direction
 skinparam linetype ortho
 
+class "Область применения" {
+   Имя области применения: varchar
+   Id описание типа (внешний ключ): integer
+}
+
 class "Описание типа" {
+   Id описание типа: integer
    Гос номер: varchar
    Имя СИ: varchar
    Единицы измерения СИ: varchar
-   Погрешность СИ: double precision
-   Имя файла описания: varchar
-   id: integer
-}
-class Поверка {
-   Описание_типа_id: integer
-   Модификация СИ: varchar
-   Тип СИ: varchar
-   Дата утверждения СИ: date
+   Ошибка измерения СИ: double precision
    Производитель СИ: varchar
-   Дата поверки СИ: date
-   id: integer
+   Дата утверждения СИ: date
+   Имя файла: varchar
 }
 
-Поверка      -[#595959,plain]-^  "Описание типа" : "Описание_типа_id:id"
+class Поверка {
+   Id описание типа: integer
+   Модификация СИ: varchar
+   Тип СИ: varchar
+   Дата поверки СИ: date
+}
+
+"Область применения"  -up[#595959,plain]-^  "Описание типа" : "Id описание типа:id"
+Поверка      -up[#595959,plain]-^  "Описание типа" : "Id описание типа:id"
 @enduml
