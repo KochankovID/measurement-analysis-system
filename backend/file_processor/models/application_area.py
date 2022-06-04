@@ -3,7 +3,7 @@ import uuid
 from sqlalchemy import Column, ForeignKey, String
 from sqlalchemy.dialects.postgresql import UUID
 
-from app.db.db import Base
+from db import Base
 
 
 class ApplicationArea(Base):

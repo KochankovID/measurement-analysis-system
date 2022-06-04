@@ -1,0 +1,28 @@
+default:
+  DB_USER:
+  DB_PASSWORD:
+  DB_HOST:
+  DB_PORT:
+  DB_NAME:
+  DB_URL: "@format postgresql+asyncpg://{this.DB_USER}:{this.DB_PASSWORD}@{this.DB_HOST}:{this.DB_PORT}/{this.DB_NAME}"
+  KAFKA_HOST:
+  KAFKA_PORT:
+  BOOTSTRAP_SERVER: "@format {this.KAFKA_HOST}:{this.KAFKA_PORT}"
+  MESSAGE_TOPIC:
+  FILE_DIR:
+
+development:
+  DB_USER: admin
+  DB_PASSWORD: admin
+  DB_HOST: localhost
+  DB_PORT: 5432
+  DB_NAME: measurement-system
+  KAFKA_HOST: localhost
+  KAFKA_PORT: 9093
+  MESSAGE_TOPIC: raw-files
+  FILE_DIR: ../measurement_gateway/app/files
+
+production:
+  DEBUG: false
+
+testing:

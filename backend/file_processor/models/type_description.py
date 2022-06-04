@@ -5,12 +5,12 @@ import uuid
 from sqlalchemy import Column, Date, Float, String
 from sqlalchemy.dialects.postgresql import UUID
 
-from app.db.db import Base
+from db import Base
 
 
 class TypeDescription(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    gos_number = Column(String)
+    gos_number = Column(String, unique=True)
     si_name = Column(String)
     si_unit_of_measurement = Column(String)
     si_measurement_error = Column(Float)

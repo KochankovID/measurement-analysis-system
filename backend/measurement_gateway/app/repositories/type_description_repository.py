@@ -1,5 +1,6 @@
 from contextlib import AbstractAsyncContextManager
 from typing import Callable, List
+from uuid import UUID
 
 from sqlalchemy import insert, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -18,7 +19,7 @@ class TypeDescriptionRepository:
             type_descriptions = await session.execute(select(TypeDescription))
             return type_descriptions.scalars().all()
 
-    async def get_by_id(self, type_description_id: int) -> TypeDescription:
+    async def get_by_id(self, type_description_id: UUID) -> TypeDescription:
         async with self.session_factory() as session:
             type_description = await session.get(TypeDescription, type_description_id)
             if not type_description:

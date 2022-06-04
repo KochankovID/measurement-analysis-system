@@ -1,4 +1,5 @@
 from typing import List
+from uuid import UUID
 
 from dependency_injector.wiring import Provide, inject
 from fastapi import Depends, HTTPException
@@ -34,7 +35,7 @@ class VerificationCBV:
     @router.get("/verification/{verification_id}")
     async def get(
         self,
-        verification_id: int,
+        verification_id: UUID,
     ) -> VerificationView:
         try:
             return await self.verification_service.get_verification_by_id(

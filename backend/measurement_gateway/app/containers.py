@@ -5,6 +5,7 @@ from dynaconf import Dynaconf
 
 from app.core.logger import get_logger_config
 from app.db.db import Database
+from app.db.kafka import Kafka
 from app.repositories.type_description_repository import \
     TypeDescriptionRepository
 from app.repositories.verification_repository import VerificationRepository
@@ -29,6 +30,7 @@ class Container(containers.DeclarativeContainer):
     )
 
     db = providers.Singleton(Database, db_url=config.provided.DB_URL)
+    kafka = providers.Singleton(Kafka, bootstrap_servers="localhost:9093")
 
     type_description_repository = providers.Factory(
         TypeDescriptionRepository, session_factory=db.provided.session

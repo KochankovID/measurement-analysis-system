@@ -41,6 +41,11 @@ def create_app() -> FastAPI:
 
     inner_app.container = container
     register_routers(inner_app)
+
+    @inner_app.on_event("startup")
+    async def startup_event():
+        await container.kafka().setup()
+
     return inner_app
 
 

@@ -1,10 +1,12 @@
 from contextlib import AbstractAsyncContextManager
 from datetime import datetime
 from typing import Callable, List
+from uuid import UUID
 
 from sqlalchemy import insert, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.models.sqalchemy.type_description import TypeDescription
 from app.models.sqalchemy.verification import Verification
 
 
@@ -19,7 +21,7 @@ class VerificationRepository:
             type_descriptions = await session.execute(select(Verification))
             return type_descriptions.scalars().all()
 
-    async def get_by_id(self, type_description_id: int) -> Verification:
+    async def get_by_id(self, type_description_id: UUID) -> Verification:
         async with self.session_factory() as session:
             type_description = await session.get(Verification, type_description_id)
             if not type_description:
@@ -28,20 +30,22 @@ class VerificationRepository:
 
     async def add(
         self,
-        type_description_id: int,
+        type_description_id: UUID,
         si_modification: str,
         si_type: str,
         si_verification_date: datetime.date,
     ) -> Verification:
         async with self.session_factory() as session:
-            type_description = await session.get(Verification, type_description_id)
+            type_description = await session.get(TypeDescription, type_description_id)
             verification = Verification(
-                type_description_id=type_description,
+                type_description_id=type_description.id,
                 si_modification=si_modification,
                 si_type=si_type,
                 si_verification_date=si_verification_date,
             )
             session.add(verification)
+
+            print(verification)
 
             await session.commit()
             await session.refresh(verification)
