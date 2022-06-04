@@ -13,12 +13,31 @@ services:
 
   measurement_gateway:
     build: ./measurement_gateway
-#    environment:
-#      POSTGRES_DB: ${DB_NAME}
-#      POSTGRES_USER: ${DB_USER}
-#      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    environment:
+      DB_HOST: pg
+      KAFKA_HOST: kafka
+      KAFKA_PORT: 9092
+    volumes:
+      - ./volumes/files:/measurement_gateway/files
     ports:
       - "8001:8000"
+
+  admin_panel:
+    build: ./admin_pannel
+    environment:
+      DATABASES__default__HOST: pg
+    ports:
+      - "8000:8000"
+
+  file_processor:
+    build: ./file_processor
+    environment:
+      DB_HOST: pg
+      KAFKA_HOST: kafka
+      KAFKA_PORT: 9092
+      FILE_DIR: files
+    volumes:
+      - ./volumes/files:/file_processor/files
 
   zookeeper:
     image: zookeeper:latest

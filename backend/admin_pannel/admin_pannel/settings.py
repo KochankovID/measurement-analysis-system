@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import django
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -71,16 +73,16 @@ WSGI_APPLICATION = 'admin_pannel.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "measurement-system",
-        'USER': "admin",
-        'PASSWORD': "admin",
-        'HOST': "localhost",
-        'PORT': "5432",
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': django.conf.settings.ENGINE,
+#         'NAME': django.conf.settings.DB_NAME,
+#         'USER': django.conf.settings.DB_USER,
+#         # 'PASSWORD': settings.DB_PASSWORD,
+#         # 'HOST': settings.DB_HOST,
+#         # 'PORT': settings.DB_PORT,
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -115,9 +117,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = './static'
 LOCALE_PATHS = ['locale/']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# HERE STARTS DYNACONF EXTENSION LOAD (Keep at the very bottom of settings.py)
+# Read more at https://www.dynaconf.com/django/
+import dynaconf  # noqa
+settings = dynaconf.DjangoDynaconf(__name__, ENVVAR_PREFIX_FOR_DYNACONF=False, SETTINGS_FILE_FOR_DYNACONF='config.yml')  # noqa
+# HERE ENDS DYNACONF EXTENSION LOAD (No more code below this line)
+ 

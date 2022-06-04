@@ -19,6 +19,9 @@ email-validator = "^1.2.1"
 python-multipart = "^0.0.5"
 aiokafka = "^0.7.2"
 python-snappy = "^0.6.1"
+aiofiles = "^0.8.0"
+asyncpg = "^0.25.0"
+orjson = "^3.7.1"
 
 [tool.poetry.dev-dependencies]
 

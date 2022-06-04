@@ -30,7 +30,7 @@ class Container(containers.DeclarativeContainer):
     )
 
     db = providers.Singleton(Database, db_url=config.provided.DB_URL)
-    kafka = providers.Singleton(Kafka, bootstrap_servers="localhost:9093")
+    kafka = providers.Singleton(Kafka, bootstrap_servers=config.provided.BOOTSTRAP_SERVER)
 
     type_description_repository = providers.Factory(
         TypeDescriptionRepository, session_factory=db.provided.session

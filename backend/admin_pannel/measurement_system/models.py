@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 import uuid
 
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -16,17 +17,25 @@ class AlembicVersion(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'alembic_version'
+        db_table = "alembic_version"
 
 
 class ApplicationArea(models.Model):
     id = models.UUIDField(_("id"), primary_key=True, default=uuid.uuid4, editable=False)
-    type_description = models.ForeignKey('TypeDescription', models.DO_NOTHING, blank=True, null=True)
-    application_area_name = models.CharField(_("Application area"), max_length=32, blank=True, null=True)
+    type_description = models.ForeignKey(
+        "TypeDescription",
+        models.CASCADE,
+        verbose_name=_("Type description"),
+        blank=True,
+        null=True,
+    )
+    application_area_name = models.CharField(
+        _("Application area"), max_length=32, blank=True, null=True
+    )
 
     class Meta:
         managed = False
-        db_table = 'measurement-data\".\"application_area'
+        db_table = 'measurement-data"."application_area'
         verbose_name = _("Application area")
         verbose_name_plural = _("Application areas")
 
@@ -36,10 +45,16 @@ class ApplicationArea(models.Model):
 
 class TypeDescription(models.Model):
     id = models.UUIDField(_("id"), primary_key=True, default=uuid.uuid4, editable=False)
-    gos_number = models.CharField(_("Government number"), max_length=32, blank=True, null=True)
+    gos_number = models.CharField(
+        _("Government number"), max_length=32, blank=True, null=True
+    )
     si_name = models.CharField(_("Name"), max_length=32, blank=True, null=True)
-    si_unit_of_measurement = models.CharField(_("Measurement unit"), max_length=32, blank=True, null=True)
-    si_measurement_error = models.FloatField(_("Measurement error"), blank=True, null=True)
+    si_unit_of_measurement = models.CharField(
+        _("Measurement unit"), max_length=32, blank=True, null=True
+    )
+    si_measurement_error = models.FloatField(
+        _("Measurement error"), blank=True, null=True
+    )
     si_approval_date = models.DateField(_("Approval date"), blank=True, null=True)
     si_producer = models.CharField(_("Producer"), max_length=32, blank=True, null=True)
     file_name = models.CharField(_("File name"), max_length=32, blank=True, null=True)
@@ -49,23 +64,58 @@ class TypeDescription(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'measurement-data\".\"type_description'
+        db_table = 'measurement-data"."type_description'
         verbose_name = _("Type description")
         verbose_name_plural = _("Type descriptions")
 
 
 class Verification(models.Model):
     id = models.UUIDField(_("id"), primary_key=True, default=uuid.uuid4, editable=False)
-    type_description = models.ForeignKey("TypeDescription", models.DO_NOTHING, blank=True, null=True)
-    si_modification = models.CharField(_("Modification"), max_length=32, blank=True, null=True)
+    type_description = models.ForeignKey(
+        "TypeDescription",
+        models.CASCADE,
+        verbose_name=_("Type description"),
+        blank=True,
+        null=True,
+    )
+    si_modification = models.CharField(
+        _("Modification"), max_length=32, blank=True, null=True
+    )
     si_type = models.CharField(_("Type"), max_length=32, blank=True, null=True)
-    si_verification_date = models.DateField(_("Verification date"), blank=True, null=True)
+    si_verification_date = models.DateField(
+        _("Verification date"), blank=True, null=True
+    )
 
     class Meta:
         managed = False
-        db_table = 'measurement-data\".\"verification'
+        db_table = 'measurement-data"."verification'
         verbose_name = _("Verification")
         verbose_name_plural = _("Verifications")
 
     def __str__(self):
         return f"{self.type_description} - {self.si_verification_date}"
+
+
+class RegexSettings(models.Model):
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super(RegexSettings, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        pass
+
+    @classmethod
+    def load(cls):
+        obj, created = cls.objects.get_or_create(pk=1)
+        return obj
+
+    type_description = ArrayField(ArrayField(models.TextField()), verbose_name=_("Type description regexes"), )
+    meaning = ArrayField(ArrayField(models.TextField()), verbose_name=_("SI meaning regexes"))
+    measurement_unit = ArrayField(ArrayField(models.TextField()), verbose_name=_("Measurement units regexes"))
+    description = ArrayField(ArrayField(models.TextField()), verbose_name=_("SI description regexes"))
+
+    class Meta:
+        db_table = 'measurement-admin"."regex_settings'
+
+    def __str__(self):
+        return "RegexSettings"

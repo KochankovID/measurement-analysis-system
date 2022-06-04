@@ -11,7 +11,7 @@ default:
     name: Ilya Kochankov
     email: ilyakochankov@yandex.ru
   DEBUG: true
-  PORT: 8000
+  PORT: 8001
   DB_USER:
   DB_PASSWORD:
   DB_HOST:
