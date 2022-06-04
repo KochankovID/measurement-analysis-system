@@ -1,0 +1,39 @@
+default:
+  PROJECT_NAME: Measurement gateway
+  PROJECT_DESCRIPTION: System that provide crud operations with measurement db
+  VERSION: 0.0.1
+  TAGS_METADATA:
+    - name: Type description
+      description: Operations with type description
+#    - name: health check
+#      description: Service health check
+  CONTACTS:
+    name: Ilya Kochankov
+    email: ilyakochankov@yandex.ru
+  DEBUG: true
+  PORT: 8000
+  DB_USER:
+  DB_PASSWORD:
+  DB_HOST:
+  DB_PORT:
+  DB_NAME:
+  DB_URL: "@format postgresql+asyncpg://{this.DB_USER}:{this.DB_PASSWORD}@{this.DB_HOST}:{this.DB_PORT}/{this.DB_NAME}"
+  ALLOWED_HOSTS:
+
+development:
+  DB_USER: admin
+  DB_PASSWORD: admin
+  DB_HOST: localhost
+  DB_PORT: 5432
+  DB_NAME: measurement-system
+  ALLOWED_HOSTS: "*"
+
+production:
+  DEBUG: false
+
+testing:
+  DEBUG: true
+  DB_USER: test
+  DB_PASSWORD: test
+  DB_HOST: localhost
+  DB_PORT: 5432

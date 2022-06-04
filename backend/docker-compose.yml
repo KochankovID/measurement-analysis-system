@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  pg:
+    image: "postgres:latest"
+    environment:
+      POSTGRES_DB: measurement-system
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - ./volumes/pg_data:/var/lib/comparing/data
+    ports:
+      - "5432:5432"

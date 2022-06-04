@@ -1,0 +1,26 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class "Описание типа" {
+   Гос номер: varchar
+   Имя СИ: varchar
+   Единицы измерения СИ: varchar
+   Погрешность СИ: double precision
+   Имя файла описания: varchar
+   id: integer
+}
+class Поверка {
+   Описание_типа_id: integer
+   Модификация СИ: varchar
+   Тип СИ: varchar
+   Дата утверждения СИ: date
+   Производитель СИ: varchar
+   Дата поверки СИ: date
+   id: integer
+}
+
+Поверка      -[#595959,plain]-^  "Описание типа" : "Описание_типа_id:id"
+@enduml
