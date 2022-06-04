@@ -1,5 +1,6 @@
 import logging
-from contextlib import AbstractContextManager, asynccontextmanager, contextmanager
+from contextlib import (AbstractContextManager, asynccontextmanager,
+                        contextmanager)
 from typing import Callable
 
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
@@ -12,7 +13,9 @@ Base = declarative_base()
 class Database:
     def __init__(self, db_url: str) -> None:
         self._engine = create_async_engine(db_url, echo=True)
-        self._session_factory = sessionmaker(autocommit=False, bind=self._engine, class_=AsyncSession)
+        self._session_factory = sessionmaker(
+            autocommit=False, bind=self._engine, class_=AsyncSession
+        )
 
     def create_database(self) -> None:
         Base.metadata.create_all(self._engine)

@@ -2,7 +2,8 @@ from concurrent.futures import Future
 from typing import Iterator, List
 
 from app.models.sqalchemy.type_description import TypeDescription
-from app.repositories.type_description_repository import TypeDescriptionRepository
+from app.repositories.type_description_repository import \
+    TypeDescriptionRepository
 
 
 class TypeDescriptionService:
@@ -12,7 +13,9 @@ class TypeDescriptionService:
     async def get_type_descriptions(self) -> List[TypeDescription]:
         return await self._repository.get_all()
 
-    async def get_type_description_by_id(self, type_description_id: int) -> TypeDescription:
+    async def get_type_description_by_id(
+        self, type_description_id: int
+    ) -> TypeDescription:
         return await self._repository.get_by_id(type_description_id)
 
     async def create_type_description(

@@ -5,8 +5,8 @@ default:
   TAGS_METADATA:
     - name: Type description
       description: Operations with type description
-#    - name: health check
-#      description: Service health check
+    - name: Verification
+      description: Operations with verifications
   CONTACTS:
     name: Ilya Kochankov
     email: ilyakochankov@yandex.ru

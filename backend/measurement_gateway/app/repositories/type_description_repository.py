@@ -9,15 +9,13 @@ from app.models.sqalchemy.type_description import TypeDescription
 
 class TypeDescriptionRepository:
     def __init__(
-            self, session_factory: Callable[..., AbstractAsyncContextManager[AsyncSession]]
+        self, session_factory: Callable[..., AbstractAsyncContextManager[AsyncSession]]
     ) -> None:
         self.session_factory = session_factory
 
     async def get_all(self) -> List[TypeDescription]:
         async with self.session_factory() as session:
-            type_descriptions = await session.execute(
-                select(TypeDescription)
-            )
+            type_descriptions = await session.execute(select(TypeDescription))
             return type_descriptions.scalars().all()
 
     async def get_by_id(self, type_description_id: int) -> TypeDescription:
@@ -28,12 +26,12 @@ class TypeDescriptionRepository:
             return type_description
 
     async def add(
-            self,
-            gos_number: str,
-            si_name: str,
-            si_unit_of_measurement: str,
-            si_measurement_error: float,
-            file_name: str,
+        self,
+        gos_number: str,
+        si_name: str,
+        si_unit_of_measurement: str,
+        si_measurement_error: float,
+        file_name: str,
     ) -> TypeDescription:
         async with self.session_factory() as session:
             type_description = TypeDescription(

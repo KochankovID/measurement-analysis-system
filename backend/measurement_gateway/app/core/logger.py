@@ -26,8 +26,8 @@ def get_logger_config(log_file_name: str):
             },
             "default_colored": {  # The formatter name, it can be anything that I wish
                 "format": f"{_cyan}%(asctime)s{_reset} {_white}-{_reset} {_magenta}%(name)s{_reset} {_white}-{_reset} "
-                          f"{_bold_red}%(levelname)s{_reset} {_white}-{_reset} {_blue}%(filename)s: %(funcName)s{_reset} "
-                          f"{_white}-{_reset} {_cyan}%(message)s{_reset}",
+                f"{_bold_red}%(levelname)s{_reset} {_white}-{_reset} {_blue}%(filename)s: %(funcName)s{_reset} "
+                f"{_white}-{_reset} {_cyan}%(message)s{_reset}",
                 "datefmt": "%Y-%m-%d %H:%M:%S",  # How to display dates
             },
             "simple": {  # The formatter name

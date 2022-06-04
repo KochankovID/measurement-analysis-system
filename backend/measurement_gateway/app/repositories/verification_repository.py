@@ -1,4 +1,5 @@
 from contextlib import AbstractAsyncContextManager
+from datetime import datetime
 from typing import Callable, List
 
 from sqlalchemy import insert, select
@@ -9,15 +10,13 @@ from app.models.sqalchemy.verification import Verification
 
 class VerificationRepository:
     def __init__(
-            self, session_factory: Callable[..., AbstractAsyncContextManager[AsyncSession]]
+        self, session_factory: Callable[..., AbstractAsyncContextManager[AsyncSession]]
     ) -> None:
         self.session_factory = session_factory
 
     async def get_all(self) -> List[Verification]:
         async with self.session_factory() as session:
-            type_descriptions = await session.execute(
-                select(Verification)
-            )
+            type_descriptions = await session.execute(select(Verification))
             return type_descriptions.scalars().all()
 
     async def get_by_id(self, type_description_id: int) -> Verification:
@@ -28,26 +27,25 @@ class VerificationRepository:
             return type_description
 
     async def add(
-            self,
-            type_description_id: int,
-            si_modification: str,
-            si_type: str,
-            si_approval_date: date,
-            file_name: str,
+        self,
+        type_description_id: int,
+        si_modification: str,
+        si_type: str,
+        si_verification_date: datetime.date,
     ) -> Verification:
         async with self.session_factory() as session:
-            type_description = Verification(
-                gos_number=gos_number,
-                si_name=si_name,
-                si_unit_of_measurement=si_unit_of_measurement,
-                si_measurement_error=si_measurement_error,
-                file_name=file_name,
+            type_description = await session.get(Verification, type_description_id)
+            verification = Verification(
+                type_description_id=type_description,
+                si_modification=si_modification,
+                si_type=si_type,
+                si_verification_date=si_verification_date,
             )
-            session.add(type_description)
+            session.add(verification)
 
             await session.commit()
-            await session.refresh(type_description)
-            return type_description
+            await session.refresh(verification)
+            return verification
 
 
 class NotFoundError(Exception):
