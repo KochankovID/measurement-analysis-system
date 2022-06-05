@@ -1,0 +1,119 @@
+{% extends "admin/change_list.html" %}
+{% load static %}
+{% block extrahead %}
+<!--    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+    <script>
+        var randomColorGenerator = function () {
+            return '#' + (Math.random().toString(16) + '0000000').slice(2, 8);
+        };
+        var options = {
+            responsive: true,
+            maintainAspectRatio: true,
+            legend: {
+                position: 'left'
+            },
+            title: {
+                display: true
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        };
+        window.onload = function () {
+            var ctx = document.getElementById("gender-chart");
+            {% regroup cl.queryset by application_areas.all.0.application_area_name as type_desc_list %}
+
+            // {{ type_desc_list }}
+            function action(event) {
+                let form_data = document.getElementById("myFile")
+                const formData  = new FormData();
+                formData.append("file", form_data.files[0])
+
+                if (form_data.files[0].name.includes("zip")) {
+                    fetch("http://127.0.0.1:8001/type_description/zip_file_upload", {
+                        method: 'POST', body: formData, headers: {
+                            // 'Content-Type': 'multipart/form-data',
+                        },
+                    })
+            } else {
+                    fetch("http://127.0.0.1:8001/type_description/file_upload", {
+                        method: 'POST', body: formData, headers: {
+                            // 'Content-Type': 'multipart/form-data',
+                        },
+                    })
+                }
+                alert("Файл загружен");
+                location.reload();
+                return false;
+            }
+            document.getElementById("form_myid").onsubmit = action;
+
+            var lineChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [{% for type_desc in type_desc_list %}'{{ type_desc.grouper }}',{% endfor %}],
+                    datasets: [{
+                        data: [{% for type_desc in type_desc_list %}'{{ type_desc.list|length }}',{% endfor %}],
+                        backgroundColor: [{% for type_desc in type_desc_list %}randomColorGenerator(),{% endfor %}]
+                    }]
+                },
+                options: options
+            });
+
+            ctx = document.getElementById("language-chart");
+            {% regroup cl.queryset by application_areas.all.0.application_area_name as type_desc_list %}
+            {% regroup cl.queryset|dictsort:"si_producer_country" by si_producer_country as type_desc_list_c %}
+            lineChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [{% for type_desc in type_desc_list %}'{{ type_desc.grouper }}',{% endfor %}],
+                    datasets: [
+                        {% for contry in type_desc_list_c %}
+                            {
+                                label: '{{ contry.grouper }}',
+                                stack: '{{ contry.grouper }}',
+                                data: [{% for type_desc in type_desc_list %}{% regroup type_desc.list by si_producer_country as type_desc_list_cc %}{%for con_tmp in type_desc_list_cc%}{% if con_tmp.grouper == contry.grouper%}'{{con_tmp.list|length }}'{% endif %},{% endfor %}{% endfor %}],
+                                backgroundColor: randomColorGenerator(),
+
+                            },
+                        {% endfor %}]
+                }, options: options
+            });
+
+            ctx = document.getElementById("grades-chart");
+            {% regroup cl.queryset|dictsort:"language" by get_language_display as language_list %}
+            lineChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [{% for type_desc in type_desc_list %}'{{ type_desc.grouper }}',{% endfor %}],
+                    datasets: [{
+                        data: [{% for language in language_list %}'{{ language.list|length }}',{% endfor %}],
+                        backgroundColor: [{% for language` in language_list %}randomColorGenerator(),{% endfor %}]
+                    }]
+                }, options: options
+            });
+        }
+    </script>
+{% endblock %}
+{% block content %}
+    <h1> Graphs </h1>
+    <hr>
+    <div style="display: flex; flex-direction: row; height: 400px">
+        <div>
+            <canvas id="gender-chart" style="height: 400px; width: 500px"></canvas>
+        </div>
+        <div>
+            <canvas id="language-chart" style="height: 400px; width: 500px"></canvas>
+        </div>
+    </div>
+    <div style="display: flex; margin: 10px">
+        <form id="form_myid" method="post">
+          <input type="file" id="myFile" name="filename">
+          <input type="submit" value="Загрузить PDF">
+        </form>
+    </div>
+    {{ block.super }}
+{% endblock %}

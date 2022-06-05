@@ -20,7 +20,7 @@ services:
     volumes:
       - ./volumes/files:/measurement_gateway/files
     ports:
-      - "8001:8000"
+      - "8001:8001"
 
   admin_panel:
     build: ./admin_pannel

@@ -55,7 +55,7 @@ ROOT_URLCONF = 'admin_pannel.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,4 +130,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import dynaconf  # noqa
 settings = dynaconf.DjangoDynaconf(__name__, ENVVAR_PREFIX_FOR_DYNACONF=False, SETTINGS_FILE_FOR_DYNACONF='config.yml')  # noqa
 # HERE ENDS DYNACONF EXTENSION LOAD (No more code below this line)
- 

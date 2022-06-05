@@ -16,22 +16,55 @@ class TypeDescriptionInLine(admin.TabularInline):
 
 
 @admin.register(Verification)
-class VendorAdmin(admin.ModelAdmin):
-    ...
+class VerificationAdmin(admin.ModelAdmin):
+    list_display = [
+        "type_description",
+        "si_verification_date",
+        "si_verification_valid_until_date",
+    ]
+    list_filter = [
+        "si_verification_date",
+        "si_verification_valid_until_date",
+    ]
 
 
 @admin.register(ApplicationArea)
 class ApplicationAreaAdmin(admin.ModelAdmin):
     inlines = [TypeDescriptionInLine]
+    search_fields = [
+        "application_area_name",
+    ]
 
 
 @admin.register(TypeDescription)
 class TypeDescriptionAppAdmin(admin.ModelAdmin):
-    inlines = [VerificationInLine]
+    list_display = [
+        "gos_number",
+        "si_name",
+        "si_approval_date",
+        "si_producer",
+        "si_producer_country",
+    ]
+    search_fields = [
+        "gos_number",
+    ]
+    list_filter = [
+        "si_approval_date",
+        "application_areas",
+        "si_producer_country",
+    ]
+    inlines = [VerificationInLine, TypeDescriptionInLine]
+
+    def get_queryset(self, request):
+        test_model_qs = super(TypeDescriptionAppAdmin, self).get_queryset(request)
+        test_model_qs = test_model_qs.prefetch_related('application_areas').order_by("application_areas__id")
+        return test_model_qs
+
+    change_list_template = 'change_list_graph.html'
 
 
 @admin.register(RegexSettings)
 class RegexSettingsAdmin(admin.ModelAdmin):
     formfield_overrides = {
-        ArrayField: {'widget': Textarea(attrs={'rows': 4, 'cols': 60})},
+        ArrayField: {"widget": Textarea(attrs={"rows": 4, "cols": 60})},
     }

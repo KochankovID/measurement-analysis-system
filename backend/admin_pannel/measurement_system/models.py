@@ -71,6 +71,11 @@ class TypeDescription(models.Model):
     file_name = models.CharField(_("File name"), max_length=32, blank=True, null=True)
     si_purpose = models.TextField(_("SI purpose"), blank=True, null=True)
     si_producer_country = models.TextField(_("Producer country"), blank=True, null=True)
+    application_areas = models.ManyToManyField(
+        "ApplicationArea",
+        through=AssociationTable,
+        verbose_name=_("Application area"),
+    )
 
     def __str__(self):
         return self.gos_number
