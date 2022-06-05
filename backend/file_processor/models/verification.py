@@ -12,6 +12,7 @@ class Verification(Base):
     si_modification = Column(String)
     si_type = Column(String)
     si_verification_date = Column(Date)
+    si_verification_valid_until_date = Column(Date)
 
     __tablename__ = "verification"
     __table_args__ = {'schema': 'measurement-data'}

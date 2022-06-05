@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
 
-class VerificationView(BaseModel):
+class FileProcessMessage(BaseModel):
     file_name: str

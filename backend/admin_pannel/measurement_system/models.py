@@ -20,17 +20,25 @@ class AlembicVersion(models.Model):
         db_table = "alembic_version"
 
 
+class AssociationTable(models.Model):
+    id = models.UUIDField(_("id"), primary_key=True, default=uuid.uuid4, editable=False)
+    application_area = models.ForeignKey("ApplicationArea", on_delete=models.CASCADE, db_column="application_area")
+    type_description = models.ForeignKey("TypeDescription", on_delete=models.CASCADE, db_column="type_description")
+
+    class Meta:
+        managed = False
+        db_table = 'measurement-data"."association'
+
+
 class ApplicationArea(models.Model):
     id = models.UUIDField(_("id"), primary_key=True, default=uuid.uuid4, editable=False)
-    type_description = models.ForeignKey(
+    type_descriptions = models.ManyToManyField(
         "TypeDescription",
-        models.CASCADE,
+        through=AssociationTable,
         verbose_name=_("Type description"),
-        blank=True,
-        null=True,
     )
-    application_area_name = models.CharField(
-        _("Application area"), max_length=32, blank=True, null=True
+    application_area_name = models.TextField(
+        _("Application area"), blank=True, null=True
     )
 
     class Meta:
@@ -55,9 +63,14 @@ class TypeDescription(models.Model):
     si_measurement_error = models.FloatField(
         _("Measurement error"), blank=True, null=True
     )
+    si_measurement_error_type = models.TextField(
+        _("Measurement error type"), blank=True, null=True
+    )
     si_approval_date = models.DateField(_("Approval date"), blank=True, null=True)
     si_producer = models.CharField(_("Producer"), max_length=32, blank=True, null=True)
     file_name = models.CharField(_("File name"), max_length=32, blank=True, null=True)
+    si_purpose = models.TextField(_("SI purpose"), blank=True, null=True)
+    si_producer_country = models.TextField(_("Producer country"), blank=True, null=True)
 
     def __str__(self):
         return self.gos_number
@@ -85,6 +98,9 @@ class Verification(models.Model):
     si_verification_date = models.DateField(
         _("Verification date"), blank=True, null=True
     )
+    si_verification_valid_until_date = models.DateField(
+        _("Verification valid until date"), blank=True, null=True
+    )
 
     class Meta:
         managed = False
@@ -109,13 +125,24 @@ class RegexSettings(models.Model):
         obj, created = cls.objects.get_or_create(pk=1)
         return obj
 
-    type_description = ArrayField(ArrayField(models.TextField()), verbose_name=_("Type description regexes"), )
-    meaning = ArrayField(ArrayField(models.TextField()), verbose_name=_("SI meaning regexes"))
-    measurement_unit = ArrayField(ArrayField(models.TextField()), verbose_name=_("Measurement units regexes"))
-    description = ArrayField(ArrayField(models.TextField()), verbose_name=_("SI description regexes"))
+    type_description = ArrayField(
+        ArrayField(models.TextField()),
+        verbose_name=_("Type description regexes"),
+    )
+    meaning = ArrayField(
+        ArrayField(models.TextField()), verbose_name=_("SI meaning regexes")
+    )
+    measurement_unit = ArrayField(
+        ArrayField(models.TextField()), verbose_name=_("Measurement units regexes")
+    )
+    description = ArrayField(
+        ArrayField(models.TextField()), verbose_name=_("SI description regexes")
+    )
 
     class Meta:
         db_table = 'measurement-admin"."regex_settings'
+        verbose_name = _("RegexSetting")
+        verbose_name_plural = _("RegexSettings")
 
     def __str__(self):
-        return "RegexSettings"
+        return "Настройки регулярных выражений"

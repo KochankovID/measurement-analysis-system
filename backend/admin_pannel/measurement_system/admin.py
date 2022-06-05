@@ -1,13 +1,17 @@
 from django.contrib import admin
 from django.contrib.postgres.fields import ArrayField
 from django.forms import Textarea
-from django.db import models
 
 from .models import ApplicationArea, RegexSettings, TypeDescription, Verification
 
 
 class VerificationInLine(admin.StackedInline):
     model = Verification
+    extra = 0
+
+
+class TypeDescriptionInLine(admin.TabularInline):
+    model = ApplicationArea.type_descriptions.through
     extra = 0
 
 
@@ -18,7 +22,7 @@ class VendorAdmin(admin.ModelAdmin):
 
 @admin.register(ApplicationArea)
 class ApplicationAreaAdmin(admin.ModelAdmin):
-    ...
+    inlines = [TypeDescriptionInLine]
 
 
 @admin.register(TypeDescription)

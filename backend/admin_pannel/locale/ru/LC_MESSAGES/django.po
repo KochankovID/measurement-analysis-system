@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-04 13:49+0300\n"
+"POT-Creation-Date: 2022-06-04 22:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,71 +24,117 @@ msgstr ""
 msgid "Measurement system database"
 msgstr "База данных измерительный систем"
 
-#: measurement_system/models.py:21 measurement_system/models.py:36
-#: measurement_system/models.py:56
+#: measurement_system/models.py:24 measurement_system/models.py:47
+#: measurement_system/models.py:82
 msgid "id"
 msgstr "id"
 
-#: measurement_system/models.py:23 measurement_system/models.py:28
-msgid "Application area"
-msgstr "Область применения"
-
-#: measurement_system/models.py:29
-msgid "Application areas"
-msgstr "Области применения"
-
-#: measurement_system/models.py:37
-msgid "Government number"
-msgstr "Государственный номер"
-
-#: measurement_system/models.py:38
-msgid "Name"
-msgstr "Имя"
-
-#: measurement_system/models.py:39
-msgid "Measurement unit"
-msgstr "Единицы измерений"
-
-#: measurement_system/models.py:40
-msgid "Measurement error"
-msgstr "Погрешность измерений"
-
-#: measurement_system/models.py:41
-msgid "Approval date"
-msgstr "Дата утверждения"
-
-#: measurement_system/models.py:42
-msgid "Producer"
-msgstr "Производитель"
-
-#: measurement_system/models.py:43
-msgid "File name"
-msgstr "Имя файла"
-
-#: measurement_system/models.py:51
+#: measurement_system/models.py:28 measurement_system/models.py:77
+#: measurement_system/models.py:86
 msgid "Type description"
 msgstr "Описание типа"
 
-#: measurement_system/models.py:52
+#: measurement_system/models.py:33 measurement_system/models.py:39
+msgid "Application area"
+msgstr "Область применения"
+
+#: measurement_system/models.py:40
+msgid "Application areas"
+msgstr "Области применения"
+
+#: measurement_system/models.py:49
+msgid "Government number"
+msgstr "Государственный номер"
+
+#: measurement_system/models.py:51
+msgid "Name"
+msgstr "Имя"
+
+#: measurement_system/models.py:53
+msgid "Measurement unit"
+msgstr "Единицы измерений"
+
+#: measurement_system/models.py:56
+msgid "Measurement error"
+msgstr "Погрешность измерений"
+
+#: measurement_system/models.py:59
+#| msgid "Measurement error"
+msgid "Measurement error type"
+msgstr "Тип погрешности"
+
+#: measurement_system/models.py:61
+msgid "Approval date"
+msgstr "Дата утверждения"
+
+#: measurement_system/models.py:62
+msgid "Producer"
+msgstr "Производитель"
+
+#: measurement_system/models.py:63
+msgid "File name"
+msgstr "Имя файла"
+
+#: measurement_system/models.py:65
+msgid "SI purpose"
+msgstr "Назначение СИ"
+
+#: measurement_system/models.py:68
+#| msgid "Producer"
+msgid "Producer country"
+msgstr "Страна производитель"
+
+#: measurement_system/models.py:78
 msgid "Type descriptions"
 msgstr "Описания типов"
 
-#: measurement_system/models.py:58
+#: measurement_system/models.py:91
 msgid "Modification"
 msgstr "Модификация СИ"
 
-#: measurement_system/models.py:59
+#: measurement_system/models.py:93
 msgid "Type"
 msgstr "Тип СИ"
 
-#: measurement_system/models.py:60
+#: measurement_system/models.py:95
 msgid "Verification date"
 msgstr "Дата поверки"
 
-#: measurement_system/models.py:65
+#: measurement_system/models.py:98
+#| msgid "Verification date"
+msgid "Verification valid until date"
+msgstr "Действительна до"
+
+#: measurement_system/models.py:104
 msgid "Verification"
 msgstr "Поверка"
 
-#: measurement_system/models.py:66
+#: measurement_system/models.py:105
 msgid "Verifications"
 msgstr "Поверки"
+
+#: measurement_system/models.py:124
+#| msgid "Type descriptions"
+msgid "Type description regexes"
+msgstr "Описания типов regexes"
+
+#: measurement_system/models.py:125
+msgid "SI meaning regexes"
+msgstr "Назначене СИ regexes"
+
+#: measurement_system/models.py:126
+msgid "Measurement units regexes"
+msgstr "Единицы измерений regexes"
+
+#: measurement_system/models.py:127
+#| msgid "Type descriptions"
+msgid "SI description regexes"
+msgstr "Описания типов regexes"
+
+#: measurement_system/models.py:131
+msgid "RegexSetting"
+msgstr "Настройка регулярных выражений"
+
+#: measurement_system/models.py:132
+msgid "RegexSettings"
+msgstr "Настройки регулярных выражений"

@@ -20,7 +20,7 @@ development:
   KAFKA_HOST: localhost
   KAFKA_PORT: 9093
   MESSAGE_TOPIC: raw-files
-  FILE_DIR: ../measurement_gateway/app/files
+  FILE_DIR: ../measurement_gateway/files
 
 production:
   DEBUG: false
